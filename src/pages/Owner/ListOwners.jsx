@@ -6,9 +6,13 @@ import {
   TrashSimpleIcon,
   ArrowLeftIcon,
 } from '@phosphor-icons/react';
+
 import LinkButton from '@/components/Buttons/LinkButton';
 import Card from '../../components/Cards/Card';
 import Spinner from '../../components/Spinners/Spinner';
+
+import { ToastError, ToastSuccess } from '@/components/Toasts/Toast.js';
+import { ShowModal } from '@/components/Modals/Modal';
 
 import { ownerService } from '../../services/owner-service';
 import ErrorPage from '../ErrorPage';
@@ -35,6 +39,28 @@ function ListOwners() {
     loadOwners();
   }, []);
 
+  async function handleDelete(id) {
+    ShowModal({
+      title: "Excluir Dono?",
+      text: "Essa ação é irreversível e removerá o registro permanentemente.",
+      icon: "warning",
+      confirmText: "Sim, excluir",
+      cancelText: "Cancelar",
+      confirmColor: "#d33",
+      cancelColor: "#0C2E7B",
+
+      onConfirm: async () => {
+        try {
+          await ownerService.remove(id);
+          ToastSuccess("Dono deletado com sucesso!");
+          loadOwners();
+        } catch (err) {
+          ToastError(err.message);
+        }
+      }
+    });
+  }
+
   if (loading) return <Spinner />;
   if (error) return <ErrorPage message={error} onRetry={loadOwners}/>;
 
@@ -46,7 +72,7 @@ function ListOwners() {
           Voltar
         </LinkButton>
 
-        <h1 className="pt-4 pb-8 text-title font-bold">Autores</h1>
+        <h1 className="pt-4 pb-8 text-title font-bold">Donos de Pets</h1>
 
         <LinkButton
           to="/owners/new"
@@ -82,14 +108,8 @@ function ListOwners() {
                 label: 'Excluir',
                 color: 'danger',
                 icon: TrashSimpleIcon,
-                onClick: () => deleteAuthor(owner.id),
-              },
-              {
-                label: "Alterar Status",
-                color: 'secondary',
-                icon: TrashSimpleIcon,
-                onClick: () => toggleStatus(owner.id),
-              },
+                onClick: () => handleDelete(owner.id),
+              }
             ]}
           />
         ))}
