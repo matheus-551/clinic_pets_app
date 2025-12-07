@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   PlusIcon,
   UserIcon,
@@ -22,6 +23,8 @@ function ListOwners() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const navigate = useNavigate();
+
   async function loadOwners() {
     setError('');
     try {
@@ -38,6 +41,10 @@ function ListOwners() {
   useEffect(() => {
     loadOwners();
   }, []);
+
+  async function handleEdit(id) {
+    navigate(`/owners/edit/${id}`);
+  }
 
   async function handleDelete(id) {
     ShowModal({
@@ -102,7 +109,7 @@ function ListOwners() {
                 label: 'Editar',
                 color: 'primary',
                 icon: PencilSimpleIcon,
-                onClick: () => openEdit(owner),
+                onClick: () => handleEdit(owner.id),
               },
               {
                 label: 'Excluir',
