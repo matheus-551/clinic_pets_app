@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   PlusIcon,
   UserIcon,
@@ -6,9 +7,13 @@ import {
   TrashSimpleIcon,
   ArrowLeftIcon,
 } from '@phosphor-icons/react';
+
 import LinkButton from '@/components/Buttons/LinkButton';
 import Card from '../../components/Cards/Card';
 import Spinner from '../../components/Spinners/Spinner';
+
+import { ToastError, ToastSuccess } from '@/components/Toasts/Toast.js';
+import { ShowModal } from '@/components/Modals/Modal';
 
 import { ownerService } from '../../services/owner-service';
 import ErrorPage from '../ErrorPage';
@@ -17,6 +22,8 @@ function ListOwners() {
   const [owners, setOwners] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  const navigate = useNavigate();
 
   async function loadOwners() {
     setError('');
@@ -35,6 +42,32 @@ function ListOwners() {
     loadOwners();
   }, []);
 
+  async function handleEdit(id) {
+    navigate(`/owners/edit/${id}`);
+  }
+
+  async function handleDelete(id) {
+    ShowModal({
+      title: "Excluir Dono?",
+      text: "Essa ação é irreversível e removerá o registro permanentemente.",
+      icon: "warning",
+      confirmText: "Sim, excluir",
+      cancelText: "Cancelar",
+      confirmColor: "#d33",
+      cancelColor: "#0C2E7B",
+
+      onConfirm: async () => {
+        try {
+          await ownerService.remove(id);
+          ToastSuccess("Dono deletado com sucesso!");
+          loadOwners();
+        } catch (err) {
+          ToastError(err.message);
+        }
+      }
+    });
+  }
+
   if (loading) return <Spinner />;
   if (error) return <ErrorPage message={error} onRetry={loadOwners}/>;
 
@@ -46,7 +79,7 @@ function ListOwners() {
           Voltar
         </LinkButton>
 
-        <h1 className="pt-4 pb-8 text-title font-bold">Autores</h1>
+        <h1 className="pt-4 pb-8 text-title font-bold">Donos de Pets</h1>
 
         <LinkButton
           to="/owners/new"
@@ -76,20 +109,14 @@ function ListOwners() {
                 label: 'Editar',
                 color: 'primary',
                 icon: PencilSimpleIcon,
-                onClick: () => openEdit(owner),
+                onClick: () => handleEdit(owner.id),
               },
               {
                 label: 'Excluir',
                 color: 'danger',
                 icon: TrashSimpleIcon,
-                onClick: () => deleteAuthor(owner.id),
-              },
-              {
-                label: "Alterar Status",
-                color: 'secondary',
-                icon: TrashSimpleIcon,
-                onClick: () => toggleStatus(owner.id),
-              },
+                onClick: () => handleDelete(owner.id),
+              }
             ]}
           />
         ))}

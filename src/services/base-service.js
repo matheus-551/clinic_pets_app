@@ -16,7 +16,7 @@ export class BaseService {
       // Erro 400 (Bad Request)
       if (error.response?.status === 400) {
         throw new Error(
-          error.response.data?.message ?? 'Erro de validação na requisição.'
+          error.response.data?.error ?? 'Erro de validação na requisição.'
         );
       }
 
