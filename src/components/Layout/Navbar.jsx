@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ListIcon, XIcon } from '@phosphor-icons/react';
 
+import logo from '../../../public/logo.png';
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -10,6 +11,7 @@ function Navbar() {
     <>
       <header className="w-full lg:hidden bg-primary text-white flex items-center justify-between p-4">
         <div className="flex justify-start items-center gap-2">
+          <img src={logo} alt="Logo" className="w-12 h-10 mr-2" />
           <h1 className="text-title font-semibold">Clinica Seu Pet</h1>
         </div>
 
@@ -23,7 +25,7 @@ function Navbar() {
       </header>
 
       {open && (
-        <nav className="md:hidden bg-primary text-white flex flex-col shadow-inner">
+        <nav className="lg:hidden bg-primary text-white flex flex-col shadow-inner">
           <Link
             to="/owners"
             className="p-4 border-b border-white/20 hover:bg-white hover:text-primary"
