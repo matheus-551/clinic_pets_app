@@ -23,7 +23,7 @@ function Sidebar() {
           </Link>
           <a
             className="w-full flex items-center justify-start gap-1 text-base text-white p-2 hover:bg-white hover:text-primary hover:rounded"
-            href="#"
+            href="/pets"
           >
             <PawPrintIcon size={32} />
             Pets
