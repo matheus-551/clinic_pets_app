@@ -1,11 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
 
-import Home from '../pages/Home';
-import NotFoundPage from '../pages/NotFound';
+import Home from '@/pages/Home';
+import NotFoundPage from '@/pages/NotFound';
 
-import ListOwners from '../pages/Owner/ListOwners';
-import CreateOwners from '../pages/Owner/CreateOwners';
-import UpdateOwners from '../pages/Owner/UpdateOwners';
+import ListOwners from '@/pages/Owner/ListOwners';
+import CreateOwners from '@/pages/Owner/CreateOwners';
+import UpdateOwners from '@/pages/Owner/UpdateOwners';
+
+import ListAppointment from '@/pages/Appointment/ListAppointment';
+import CreateAppointment from '@/pages/Appointment/CreateAppointment';
+import UpdateAppointment from '@/pages/Appointment/UpdateAppointment';
 
 export default function AppRoutes() {
   return (
@@ -15,6 +19,9 @@ export default function AppRoutes() {
       <Route path="/owners" element={<ListOwners />} />
       <Route path='/owners/new' element={<CreateOwners />}/>
       <Route path="/owners/edit/:id" element={<UpdateOwners />} />
+      <Route path="/appointments" element={<ListAppointment />} />
+      <Route path="/appointments/new" element={<CreateAppointment />} />
+      <Route path="/appointments/edit/:id" element={<UpdateAppointment />} />
     </Routes>
   );
 }
