@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import logo from '../../../public/logo.png';
+import { CalendarIcon, PawPrintIcon, UsersThreeIcon } from '@phosphor-icons/react';
 
 function Sidebar() {
   return (
@@ -14,23 +15,26 @@ function Sidebar() {
         <nav className="flex-1 p-1 justify-start items-center space-y-3">
           <Link
             to="/owners"
-            className="w-full block text-base text-white p-2 hover:bg-white hover:text-primary hover:rounded"
+            className="w-full flex items-center justify-start gap-1  text-base text-white p-2 hover:bg-white hover:text-primary hover:rounded"
             href="#"
           >
+            <UsersThreeIcon size={32} />
             Donos de Pets
           </Link>
           <a
-            className="w-full block text-base text-white p-2 hover:bg-white hover:text-primary hover:rounded"
+            className="w-full flex items-center justify-start gap-1 text-base text-white p-2 hover:bg-white hover:text-primary hover:rounded"
             href="#"
           >
+            <PawPrintIcon size={32} />
             Pets
           </a>
-          <a
-            className="w-full block text-base text-white p-2 hover:bg-white hover:text-primary hover:rounded"
-            href="#"
+          <Link
+            to="/appointments"
+            className="w-full flex items-center justify-start gap-1 text-base text-white p-2 hover:bg-white hover:text-primary hover:rounded"
           >
+            <CalendarIcon size={32} />
             Agendamentos
-          </a>
+          </Link>
         </nav>
       </aside>
     </>

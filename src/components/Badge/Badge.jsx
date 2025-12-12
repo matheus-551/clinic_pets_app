@@ -4,7 +4,7 @@ import clsx from 'clsx';
 const TYPE_STYLES = {
   active: 'bg-success',
   inactive: 'bg-danger',
-  pedding: 'bg-warning',
+  pending: 'bg-warning',
   default: 'bg-gray-400',
 };
 
@@ -38,7 +38,7 @@ function Badge({ text, type = 'default', textSize = 'sm', size = 'auto' }) {
 
 Badge.propTypes = {
   text: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['active', 'inactive', 'pedding', 'default']),
+  type: PropTypes.oneOf(['active', 'inactive', 'pending', 'default']),
   textSize: PropTypes.oneOf(['sm', 'md', 'lg']),
   size: PropTypes.oneOf(['auto', 'sm', 'md', 'lg']),
 };

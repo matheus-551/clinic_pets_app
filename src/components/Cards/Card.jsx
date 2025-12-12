@@ -6,7 +6,7 @@ function Card({
   icon: Icon = UserIcon,
   title,
   fields = [],
-  status,
+  badges = [],
   actions = [],
 }) {
   return (
@@ -44,19 +44,23 @@ function Card({
             </div>
           ))}
 
-          {status && (
-            <div className="flex flex-col p-3">
-              <label className="text-md font-semibold text-black">
-                Status:
-              </label>
-              <Badge
-                text={
-                  status.status
-                }
-                type={(status.status == 'AGENDADA' ? 'active' : (status.status == 'CANCELADA' ? 'inactive' : 'pedding'))}
-                textSize="md"
-                size="md"
-              />
+          {/* BADGES OPCIONAIS ABAIXO DO TÍTULO */}
+          {badges.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-2 justify-center">
+              {badges.map((badge, index) => (
+                <div key={index} className="flex flex-col items-center">
+                  <label className="text-md font-semibold text-black">
+                    {badge.label}
+                  </label>
+
+                  <Badge
+                    text={badge.text}
+                    type={badge.type}
+                    size={badge.size}
+                    textSize={badge.textSize}
+                  />
+                </div>
+              ))}
             </div>
           )}
         </div>
