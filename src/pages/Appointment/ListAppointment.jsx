@@ -57,7 +57,7 @@ function ListAppointment() {
             confirmColor: "#d33",
             cancelColor: "#0C2E7B",
 
-            onConfirm: async () => {
+            preConfirm: async () => {
                 try {
                     await appointmentService.remove(id);
                     ToastSuccess("Agendamento deletado com sucesso!");
