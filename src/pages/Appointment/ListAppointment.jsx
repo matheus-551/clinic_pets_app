@@ -44,7 +44,7 @@ function ListAppointment() {
     }, [])
 
     function handleEdit(id) {
-        navigate(`/owners/edit/${id}`);
+        navigate(`/appointments/edit/${id}`);
     }
 
     async function handleDelete(id) {

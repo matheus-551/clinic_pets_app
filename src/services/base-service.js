@@ -22,8 +22,7 @@ export class BaseService {
 
       // Qualquer outro erro
       throw new Error(
-        error.response?.data?.message ||
-          'Erro inesperado ao processar sua requisição.'
+        error.response?.data?.error ?? 'Erro inesperado ao processar sua requisição.'
       );
     }
   }
