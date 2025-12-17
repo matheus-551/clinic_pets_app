@@ -27,6 +27,14 @@ function Navbar() {
       {open && (
         <nav className="lg:hidden bg-primary text-white flex flex-col shadow-inner">
           <Link
+            to="/"
+            className="p-4 border-b border-white/20 hover:bg-white hover:text-primary"
+            onClick={() => setOpen(false)}
+          >
+            Inicio
+          </Link>
+
+          <Link
             to="/owners"
             className="p-4 border-b border-white/20 hover:bg-white hover:text-primary"
             onClick={() => setOpen(false)}

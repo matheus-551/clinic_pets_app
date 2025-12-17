@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import logo from '../../../public/logo.png';
-import { CalendarIcon, PawPrintIcon, UsersThreeIcon } from '@phosphor-icons/react';
+import { CalendarIcon, HouseIcon, PawPrintIcon, UsersThreeIcon } from '@phosphor-icons/react';
 
 function Sidebar() {
   return (
@@ -13,6 +13,14 @@ function Sidebar() {
         </div>
 
         <nav className="flex-1 p-1 justify-start items-center space-y-3">
+          <Link
+            to="/"
+            className="w-full flex items-center justify-start gap-1  text-base text-white p-2 hover:bg-white hover:text-primary hover:rounded"
+            href="#"
+          >
+            <HouseIcon size={32} />
+            Inicio
+          </Link>
           <Link
             to="/owners"
             className="w-full flex items-center justify-start gap-1  text-base text-white p-2 hover:bg-white hover:text-primary hover:rounded"
