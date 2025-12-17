@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ListIcon, XIcon } from '@phosphor-icons/react';
 
-import logo from '../../../public/logo.png';
+import logo from '@/assets/logo_pawl.png';
 
 function Navbar() {
   const [open, setOpen] = useState(false);

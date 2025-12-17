@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import logo from '../../../public/logo.png';
+import logo from '@/assets/logo_pawl.png';
 import { CalendarIcon, HouseIcon, PawPrintIcon, UsersThreeIcon } from '@phosphor-icons/react';
 
 function Sidebar() {
