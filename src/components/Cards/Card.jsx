@@ -11,8 +11,7 @@ function Card({
 }) {
   return (
     <div className="w-full flex flex-col lg:flex-row border border-gray-200 rounded-xl shadow-sm p-5 gap-6 mb-4">
-      {/* --- COLUNA DO ÍCONE E TÍTULO --- */}
-      <div className="w-full lg:w-1/4 flex flex-col items-center justify-center">
+      <div className="w-full lg:w-1/6 flex flex-col items-center justify-center">
         {Icon && <Icon color="#000" size="80" />}
         <span className="text-lg font-bold text-black text-center">
           {title}
@@ -27,6 +26,7 @@ function Card({
             grid
             grid-cols-1
             grid-rows-3
+            md:grid-cols-2
             lg:auto-cols-fr
             lg:grid-flow-col
             gap-2
@@ -44,9 +44,8 @@ function Card({
             </div>
           ))}
 
-          {/* BADGES OPCIONAIS ABAIXO DO TÍTULO */}
           {badges.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-2 justify-center">
+            <div className="col-span-full lg:col-span-1 flex flex-wrap gap-2 mt-2 justify-center">
               {badges.map((badge, index) => (
                 <div key={index} className="flex flex-col items-center">
                   <label className="text-md font-semibold text-black">
@@ -66,9 +65,8 @@ function Card({
         </div>
       </div>
 
-      {/* --- COLUNA DAS AÇÕES --- */}
       <div className="w-full lg:w-1/4 flex flex-col items-center justify-center">
-        <div className="w-full flex flex-row lg:flex-col items-center justify-center gap-2">
+        <div className="w-full flex flex-col md:flex-row lg:flex-col items-center justify-center gap-2">
           {actions.map((action, index) => (
             <Button
               key={index}
