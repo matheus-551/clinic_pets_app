@@ -55,8 +55,8 @@ function ListOwners() {
       cancelText: "Cancelar",
       confirmColor: "#d33",
       cancelColor: "#0C2E7B",
-
-      onConfirm: async () => {
+      loaderConfirm: true,
+      preConfirm: async () => {
         try {
           await ownerService.remove(id);
           ToastSuccess("Dono deletado com sucesso!");
