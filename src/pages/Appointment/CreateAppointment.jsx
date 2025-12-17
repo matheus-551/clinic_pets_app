@@ -93,7 +93,7 @@ function CreateAppointment() {
 
     return (
         <div className="w-full px-6 pt-4 flex flex-col">
-            <LinkButton to="/owners" color="none" className="flex items-center">
+            <LinkButton to="/appoitments" color="none" className="flex items-center">
                 <ArrowLeftIcon size={20} className="mr-2" /> Voltar
             </LinkButton>
 

@@ -16,7 +16,6 @@ function Sidebar() {
           <Link
             to="/"
             className="w-full flex items-center justify-start gap-1  text-base text-white p-2 hover:bg-white hover:text-primary hover:rounded"
-            href="#"
           >
             <HouseIcon size={32} />
             Inicio
@@ -24,18 +23,17 @@ function Sidebar() {
           <Link
             to="/owners"
             className="w-full flex items-center justify-start gap-1  text-base text-white p-2 hover:bg-white hover:text-primary hover:rounded"
-            href="#"
           >
             <UsersThreeIcon size={32} />
             Donos de Pets
           </Link>
-          <a
+          <Link
+            to="/pets"
             className="w-full flex items-center justify-start gap-1 text-base text-white p-2 hover:bg-white hover:text-primary hover:rounded"
-            href="/pets"
           >
             <PawPrintIcon size={32} />
             Pets
-          </a>
+          </Link>
           <Link
             to="/appointments"
             className="w-full flex items-center justify-start gap-1 text-base text-white p-2 hover:bg-white hover:text-primary hover:rounded"
